@@ -1,0 +1,10 @@
+<?php
+require 'common.php';
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+    $item_id = $_GET['id'];
+    $user_id = $_SESSION['id'];
+$user_query="INSERT INTO user_items(user_id, item_id, status) VALUES ('$user_id', '$item_id', 'Added to cart')";
+$query_result= mysqli_query($con, $user_query) or die(mysqli_error($con));
+header('location: products.php');
+}
+?>
